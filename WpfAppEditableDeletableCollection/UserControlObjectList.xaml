@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="WpfAppEditableDeletableCollection.UserControlObjectList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAppEditableDeletableCollection"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal">
+        
+     
+       
+        
+        <Border BorderThickness="2" BorderBrush="Black" Width="250" >
+            <ItemsControl ItemsSource="{Binding ListUC}" Width="300"  Margin="10">
+                <ItemsControl.ItemTemplate>
+               
+             
+                    <DataTemplate>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Name1}"></Label>
+                            <Button Content="Update" Command="{Binding OnUpdateClick}" CommandParameter="{Binding}" Width="50" Margin="5" Foreground="Green"></Button>
+                            <Button Content="Delete" Command="{Binding OnRemoveClick}" CommandParameter="{Binding}" Width="50" Margin="5" Foreground="Red"></Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+        <ItemsControl ItemsSource="{Binding ListDetail}" Width="300"  Margin="10">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Department Id"  Margin="5"></Label>
+                            <TextBox Text="{Binding DepartmentId,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"  Margin="5"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Department Name"  Margin="5"></Label>
+                            <TextBox Text="{Binding DepartmentName,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"  Margin="5"></TextBox>
+                    </StackPanel>
+                        <StackPanel>
+                            <Button Content="Update Now" Command="{Binding UpdateDept}" CommandParameter="{Binding}"></Button></StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
